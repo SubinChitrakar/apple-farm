@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Calendar;
+import java.util.Comparator;
 
 public class AppleTree{
     public List<Farm> setFarmData(){
@@ -61,6 +62,7 @@ public class AppleTree{
         List<Chemical> chemicalList = appleTree.setChemicalData();
         List<OrderDetail> orderDetailList = appleTree.setOrderList(farmList, chemicalList);
 
+        orderDetailList.sort(Comparator.comparing(o -> o.getOrderDate()));
         appleTree.displayOrderList(orderDetailList);
     }
 }
