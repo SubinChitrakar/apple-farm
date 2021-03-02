@@ -11,7 +11,7 @@ public class Farm extends BaseClass{
         this.width = width;
         this.length = length;
         this.lastSprayed = lastSprayed;
-        this.areaInHectare = 0;
+        this.setAreaInHectare();
     }
 
     public double getWidth() {
@@ -42,8 +42,9 @@ public class Farm extends BaseClass{
         return areaInHectare;
     }
 
-    public void setAreaInHectare(double areaInHectare) {
-        this.areaInHectare = areaInHectare;
+    public void setAreaInHectare() {
+        double areaInMeter = new Area().findAreaOfRectangle(this.getLength(), this.getWidth());
+        this.areaInHectare = new Convert().convertMeterToHectare(areaInMeter);
     }
 
     public void display(){

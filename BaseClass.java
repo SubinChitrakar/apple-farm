@@ -22,4 +22,9 @@ public class BaseClass{
     public void setCrop(String crop) {
         this.crop = crop;
     }
+
+    public void display(){
+        System.out.println("Name: " + this.getName());
+        System.out.println("Crop: " + this.getCrop());
+    }
 }

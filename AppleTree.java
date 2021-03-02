@@ -25,13 +25,6 @@ public class AppleTree{
         return chemicalData;
     }
 
-    public void setAreaOfFarms(List<Farm> farmList){
-        for(Farm farm:farmList){
-            double areaInMeter = new Area().findAreaOfRectangle(farm.getLength(), farm.getWidth());
-            farm.setAreaInHectare(new Convert().convertMeterToHectare(areaInMeter));
-        }
-    }
-
     public void displayFarms(List<Farm> farmList){
         for(Farm farm : farmList){
             System.out.println();
@@ -52,8 +45,5 @@ public class AppleTree{
         List<Farm> farmList = appleTree.setFarmData();
         List<Chemical> chemicalList = appleTree.setChemicalData();
 
-        appleTree.setAreaOfFarms(farmList);
-
-        appleTree.displayFarms(farmList);
     }
 }
