@@ -5,7 +5,7 @@ public class OrderDetail extends BaseClass{
     private double price;
     private Date orderDate;
 
-    public OrderDetail(Sring name, String crop, String chemicalName, double price, Date orderDate){
+    public OrderDetail(String name, String crop, String chemicalName, double price, Date orderDate){
         super(name, crop);
         this.chemicalName = chemicalName;
         this.price = price;

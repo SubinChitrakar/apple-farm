@@ -2,9 +2,9 @@ import java.util.Date;
 
 public class Chemical extends BaseClass{
     private double price;
-    private double applicationFrequenceWeek;
+    private int applicationFrequenceWeek;
 
-    public Chemical(String name, String cropUsage, double price, double applicationFrequenceWeek){
+    public Chemical(String name, String cropUsage, double price, int applicationFrequenceWeek){
         super(name, cropUsage);
         this.price = price;
         this.applicationFrequenceWeek = applicationFrequenceWeek;
@@ -18,11 +18,11 @@ public class Chemical extends BaseClass{
         this.price = price;
     }
 
-    public double getApplicationFrequenceWeek() {
+    public int getApplicationFrequenceWeek() {
         return applicationFrequenceWeek;
     }
 
-    public void setApplicationFrequenceWeek(double applicationFrequenceWeek) {
+    public void setApplicationFrequenceWeek(int applicationFrequenceWeek) {
         this.applicationFrequenceWeek = applicationFrequenceWeek;
     }
 

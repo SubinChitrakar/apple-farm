@@ -1,6 +1,8 @@
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Calendar;
 
 public class AppleTree{
     public List<Farm> setFarmData(){
@@ -25,17 +27,30 @@ public class AppleTree{
         return chemicalData;
     }
 
-    public void displayFarms(List<Farm> farmList){
-        for(Farm farm : farmList){
-            System.out.println();
-            farm.display();
+    public List<OrderDetail> setOrderList(List<Farm> farmList, List<Chemical> chemicalList){
+        List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
+        Map<String, Chemical> chemicalMap = new Convert().covertChemicalListIntoMap(chemicalList);
+        Calendar calendar = Calendar.getInstance();
+
+        for(Farm farm: farmList){
+            Chemical chemical = chemicalMap.get(farm.getCrop());
+
+            double price = farm.getAreaInHectare() * chemical.getPrice();
+
+            calendar.setTime(farm.getLastSprayed());
+            calendar.add(Calendar.WEEK_OF_YEAR, chemical.getApplicationFrequenceWeek());
+
+            OrderDetail orderDetail = new OrderDetail(farm.getName(), farm.getCrop(), chemical.getName(), price, calendar.getTime());
+            orderDetailList.add(orderDetail);
         }
+
+        return  orderDetailList;
     }
 
-    public void displayChemicals(List<Chemical> chemicalList){
-        for(Chemical chemical:chemicalList){
+    public void displayOrderList(List<OrderDetail> orderDetailsList){
+        for(OrderDetail orderDetail: orderDetailsList){
             System.out.println();
-            chemical.display();
+            orderDetail.display();
         }
     }
 
@@ -44,6 +59,8 @@ public class AppleTree{
 
         List<Farm> farmList = appleTree.setFarmData();
         List<Chemical> chemicalList = appleTree.setChemicalData();
+        List<OrderDetail> orderDetailList = appleTree.setOrderList(farmList, chemicalList);
 
+        appleTree.displayOrderList(orderDetailList);
     }
 }
