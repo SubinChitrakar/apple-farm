@@ -1,28 +1,17 @@
 import java.util.Date;
 
-public class Farm{
-    private String name;
+public class Farm extends BaseClass{
     private double width;
     private double length;
-    private String crop;
     private Date lastSprayed;
     private double areaInHectare;
     
     public Farm(String name, double width, double length, String crop, Date lastSprayed){
-        this.name = name;
+        super(name, crop);
         this.width = width;
         this.length = length;
-        this.crop = crop;
         this.lastSprayed = lastSprayed;
         this.areaInHectare = 0;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public double getWidth() {
@@ -39,14 +28,6 @@ public class Farm{
 
     public void setLength(double length) {
         this.length = length;
-    }
-
-    public String getCrop() {
-        return crop;
-    }
-
-    public void setCrop(String crop) {
-        this.crop = crop;
     }
 
     public Date getLastSprayed() {
@@ -66,10 +47,10 @@ public class Farm{
     }
 
     public void display(){
-        System.out.println("Name: "+ this.getName());
+        System.out.println("Name: "+ super.getName());
         System.out.println("Length: "+ this.getLength());
         System.out.println("Width: "+ this.getWidth());
-        System.out.println("Crop: "+ this.getCrop());
+        System.out.println("Crop: "+ super.getCrop());
         System.out.println("Last Sprayed: "+ this.getLastSprayed());
         System.out.println("Area in Hectare: "+ this.getAreaInHectare());
     }
