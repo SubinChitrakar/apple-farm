@@ -39,7 +39,7 @@ public class AppleTree{
             double price = farm.getAreaInHectare() * chemical.getPrice();
 
             calendar.setTime(farm.getLastSprayed());
-            calendar.add(Calendar.WEEK_OF_YEAR, chemical.getApplicationFrequenceWeek());
+            calendar.add(Calendar.WEEK_OF_YEAR, chemical.getApplicationFrequenceWeek() - 1);
 
             OrderDetail orderDetail = new OrderDetail(farm.getName(), farm.getCrop(), chemical.getName(), price, calendar.getTime());
             orderDetailList.add(orderDetail);
